@@ -1,0 +1,22 @@
+start on starting <%= app %>-<%= process.name %>
+stop on stopping <%= app %>-<%= process.name %>
+
+respawn
+kill timeout 10
+
+chdir <%= engine.directory %>
+env PORT=<%= port %>
+<% engine.environment.each_pair do |var,env| %>
+env <%= var.upcase %>=<%= env %>
+<% end %>
+
+script
+  <%
+  m = process.command.match /(\S+)\s(.*)/
+  cmd, args = m[1], m[2]
+  cmd = `which bundle`.strip.gsub(/[\n\r\t]+/,'') if cmd.strip == 'bundle'
+  %>
+  exec start-stop-daemon -S -u <%= user %> -d <%= engine.directory %> \
+       --exec <%= cmd %> \
+       -- <%= args %> >> <%= log_root %>/<%=process.name%>-<%=num%>.log 2>&1
+end script
