@@ -22,7 +22,7 @@ Or install it yourself as:
 
     $ foreman export upstart-daemon [location]
 
-    Foreman export your application to [location] path.
+Foreman export your application to [location] path.
 
 For example:
 
