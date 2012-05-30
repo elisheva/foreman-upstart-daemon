@@ -2,7 +2,7 @@
 
 ##Introduction
 
-     Foreman export the application in upstart-daemon format
+Foreman export the application in upstart-daemon format
 
 ## Installation
 
@@ -20,9 +20,9 @@ Or install it yourself as:
 
 ##Usage
 
-   $ foreman export upstart-daemon [location]
+    $ foreman export upstart-daemon [location]
 
-     Foreman export your application to [location] path.
+    Foreman export your application to [location] path.
 
 For example:
 
